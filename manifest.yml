@@ -1,10 +1,5 @@
+---
 applications:
-- path: .
-  memory: 128M
-  instances: 1
-  domain: mybluemix.net
-  name: chatbotecm
-  host: chatbotecm
-  disk_quota: 1024M
-  services:
-  - Conversation-vx
+ - name: chatbotecm
+   random-route: true
+   memory: 128M
