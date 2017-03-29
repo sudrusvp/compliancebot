@@ -31,7 +31,7 @@ def main_page():
 		#print("inside post2")
 		print(json.dumps(response, indent=2))
 		print("***********")
-		print str(response['context'])
+		print(json.dumps(response['context'] , indent=2))
 		#print("inside post3")
 		#response_message = response.read();
 		#print("inside post4")
