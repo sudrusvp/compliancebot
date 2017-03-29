@@ -8,6 +8,7 @@ from flask import Flask
 from flask import render_template
 from flask import request, url_for, make_response
 from watson_developer_cloud import ConversationV1
+from watson_developer_cloud import ConversationV1.model
 
 conversation = ConversationV1(
     username='81cae901-ee0e-4066-b333-c6d9cc5532ec',
