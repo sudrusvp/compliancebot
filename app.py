@@ -15,7 +15,7 @@ conversation = ConversationV1(
     version='2017-02-03')
 
 workspace_id = 'e5fa2b42-e839-4e1b-9c6d-4d3ca9a93330'
-#context={}
+context={}
 app = Flask(__name__, static_url_path='/static')
 @app.route("/", methods=['GET', 'POST'])
 
@@ -26,12 +26,14 @@ def main_page():
 
 	elif request.method == 'POST':
 		#print("inside post1")
-		response = conversation.message(workspace_id=workspace_id, message_input={'text': request.form['message']})
+		response = conversation.message(workspace_id=workspace_id, message_input={'text': request.form['message']},context=context)
 		#print(response)
 		#print("inside post2")
+		#print("***********")
+		#print(json.dumps(response['context']['context_name'] , indent=2))
+		context = str(response['context']['context_name'])
+		response = conversation.message(workspace_id=workspace_id, message_input={'text': request.form['message']},context=context)
 		print(json.dumps(response, indent=2))
-		print("***********")
-		print(json.dumps(response['context']['context_name'] , indent=2))
 		#print("inside post3")
 		#response_message = response.read();
 		#print("inside post4")
