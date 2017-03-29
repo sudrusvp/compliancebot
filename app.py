@@ -15,9 +15,7 @@ conversation = ConversationV1(
     version='2017-02-03')
 
 workspace_id = 'e5fa2b42-e839-4e1b-9c6d-4d3ca9a93330'
-context={
-	context_name='name_context'
-}
+context={}
 app = Flask(__name__, static_url_path='/static')
 @app.route("/", methods=['GET', 'POST'])
 
