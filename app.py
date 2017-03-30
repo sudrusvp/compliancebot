@@ -25,15 +25,12 @@ def main_page():
 		return render_template("index2.html")	
 
 	elif request.method == 'POST':
-		#print("inside post1")
 		#response = conversation.message(workspace_id=workspace_id, message_input={'text': request.form['message']},context=context)
-		#print(response)
-		#print("inside post2")
 		#context = str(response['context']['context_name'])
 		response = conversation.message(workspace_id=workspace_id, message_input={'text': request.form['message']},context=context)
-		print(json.dumps(response, indent=2))
-		#print("***********")
-		print(json.dumps(response['context'], indent=2))
+		#print(json.dumps(response, indent=2))
+		print(response)
+		#print(json.dumps(response['context'], indent=2))
 		#response_message = response.read();
 		#response_message = json.dumps(response, indent=2)
 		#res = json.load(response_message)
