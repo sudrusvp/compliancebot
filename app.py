@@ -47,7 +47,7 @@ def main_page():
 		#print(json.dumps(context['user'][1]['category_name'],indent=4))
 		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
 		if response['intents'] and response['intents'][0]['confidence']:
-			confidence = str(response['intents'][0]['confidence'] * 100)
+			confidence = str(round(response['intents'][0]['confidence'] * 100))
 			response = str(response['output']['text'][0] + "\n" + "I'm "  + confidence + "% certain about this answer")
 		#print(json.dumps(response,indent=2))
 		return str(response)
