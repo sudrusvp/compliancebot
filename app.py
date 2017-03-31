@@ -10,6 +10,7 @@ from flask import request, url_for, make_response
 from watson_developer_cloud import ConversationV1
 from watson_developer_cloud import ToneAnalyzerV3
 import tone_detection
+import cgi
 
 
 conversation = ConversationV1(
@@ -18,7 +19,7 @@ conversation = ConversationV1(
     version='2017-02-03')
 
 conv_workspace_id = 'e5fa2b42-e839-4e1b-9c6d-4d3ca9a93330'
-#context={
+context={}
 
 tone_analyzer = ToneAnalyzerV3(
     username = '20c2903e-48a9-4fd5-8f0b-5e699fa5343e',
@@ -37,20 +38,19 @@ def main_page():
 
 	elif request.method == 'POST':
 		
-		payload = {
-    		'workspace_id': conv_workspace_id,
- 	 		'input': {
-        		'text': request.form['message']
-    		}
-		}
-		
-		tone = tone_analyzer.tone(text=payload['input']['text'])
+		tone = tone_analyzer.tone( text = request.form['message'])
 		#conversation_payload = tone_detection.updateUserTone(payload, tone, maintainToneHistoryInContext)
-        
-        print(json.dumps(tone,indent=2))
-		response = conversation.message(workspace_id=workspace_id, message_input={'text': request.form['message']})
+		#print(json.dumps(tone,indent=2))
+		context = {
+			"user":tone['document_tone']['tone_categories']
+		}
+		#print(json.dumps(context['user'][1]['category_name'],indent=4))
+		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
+		if response['intents'] and response['intents'][0]['confidence']:
+			confidence = str(response['intents'][0]['confidence'] * 100)
+			response = str(response['output']['text'][0] + "\n" + "I'm "  + confidence + "% certain about this answer")
 		#print(json.dumps(response,indent=2))
-		return str(response['output']['text'][0])
+		return str(response)
 		
 
 if __name__ == "__main__":
