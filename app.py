@@ -48,7 +48,7 @@ def main_page():
 		#conversation_payload = tone_detection.updateUserTone(payload, tone, maintainToneHistoryInContext)
         
         print(json.dumps(tone,indent=2))
-		response = conversation.message( workspace_id = conv_workspace_id,message_input='text' : request.form['message'])
+		response = conversation.message(workspace_id=workspace_id, message_input={'text': request.form['message']})
 		#print(json.dumps(response,indent=2))
 		return str(response['output']['text'][0])
 		
