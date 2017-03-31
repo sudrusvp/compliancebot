@@ -24,7 +24,7 @@ conv_workspace_id = 'e5fa2b42-e839-4e1b-9c6d-4d3ca9a93330'
 tone_analyzer = ToneAnalyzerV3(
     username = '20c2903e-48a9-4fd5-8f0b-5e699fa5343e',
     password = 'ZC2WBeLbXUXs'
-    version = '2016-02-11')
+    version = '2016-05-19')
 
 maintainToneHistoryInContext = True 
 
