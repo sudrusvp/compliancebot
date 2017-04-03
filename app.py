@@ -40,7 +40,7 @@ def main_page():
 		
 		tone = tone_analyzer.tone( text = request.form['message'])
 		#conversation_payload = tone_detection.updateUserTone(payload, tone, maintainToneHistoryInContext)
-		#print(json.dumps(tone,indent=2))
+		print(json.dumps(tone,indent=2))
 		context = {
 			"user":tone['document_tone']['tone_categories']
 		}
@@ -48,7 +48,7 @@ def main_page():
 		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
 		if response['intents'] and response['intents'][0]['confidence']:
 			confidence = str(round(response['intents'][0]['confidence'] * 100))
-			response = str(response['output']['text'][0] + "\n" + "I'm "  + confidence + "% certain about this answer")
+			response = str(response['output']['text'][0] + "\n" + "<HTML><BODY><hr style='background-color: #fff;border-top: 2px dashed #8c8b8b;width:200px;margin-left:0px'></body></html>I'm "  + confidence + "% certain about this answer")
 		#print(json.dumps(response,indent=2))
 		return str(response)
 		
