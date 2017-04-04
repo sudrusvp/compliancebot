@@ -63,11 +63,6 @@ def main_page():
 		l = str(context['user'][2]['tones'][3]['tone_name']) + "-" + str(round(context['user'][2]['tones'][3]['score'],2))
 		m = str(context['user'][2]['tones'][4]['tone_name']) + "-" + str(round(context['user'][2]['tones'][4]['score'],2))
 		
-		#if str(response['output']['nodes_visited'][0]) == 'anything_else'
-			#print('if executed')
-			#return str(response)
-		#print("""""""""""""""""""")
-		#print(a)
 		if response['intents'] and response['intents'][0]['confidence']:
 			confidence = str(round(response['intents'][0]['confidence'] * 100))
 			response = str(response['output']['text'][0] + "\n" + "<HTML><BODY><hr style='height: 7px;border: 0;box-shadow: 0 10px 10px -10px white inset;width:270px;margin-left:0px'></body></html>I'm "  + confidence + "% certain about this answer!")
@@ -79,8 +74,12 @@ def main_page():
 			script = """<html><head><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
 			</head>
 			<body>
-			<button style='background-color:White;' onclick='writeTextFile()'><span class='glyphicon glyphicon-thumbs-up'></span> Yes</button>
-			<button style='background-color:White;' onclick='readTextFile()'><span class='glyphicon glyphicon-thumbs-down'></span> No</button>
+			<a href='#' class='btn btn-info btn-lg'>
+          	<span class='glyphicon glyphicon-thumbs-up'></span> Yes
+        	</a>
+			<a href='#' class='btn btn-info btn-lg'>
+          		<span class='glyphicon glyphicon-thumbs-down'></span> No
+        	</a>
 			</body>
 			</html>"""
 			
