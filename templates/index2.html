@@ -216,12 +216,13 @@ body {
 	<script type="text/javascript">
 		/*eslint-env jquery */
 		function doSomething() {
-   	 		$.get("static/php/write.php");
-    		return false;
+   	 		//$.get("static/php/write.php");
+    		//return false;
     		//var x = new XMLHttpRequest();
     		//x.open("GET","static/php/write.php",true);
     		//x.send();
     		//return true;
+    		 document.location.href = "static/php/write.php";
 		}
 	</script>
   </head>
