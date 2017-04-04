@@ -1,5 +1,5 @@
-<html>
-<p>We appreciate your feedback!</p>
+
+
 <?php
 function writeToFile() {
     $fHandle = fopen('static/js/test.txt', 'w');
@@ -7,4 +7,3 @@ function writeToFile() {
     fclose($fHandle);
 }
 ?>
-</html>
