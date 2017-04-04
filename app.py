@@ -78,7 +78,7 @@ def main_page():
           	<span class='glyphicon glyphicon-thumbs-up'></span> Yes
         	</a>
 			<a href='#' class='btn btn-info btn-lg'>
-          		<span class='glyphicon glyphicon-thumbs-down'></span> No
+          	<span class='glyphicon glyphicon-thumbs-down'></span> No
         	</a>
 			</body>
 			</html>"""
