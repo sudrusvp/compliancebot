@@ -215,6 +215,30 @@ body {
 	<script type="text/javascript" src="static/js/Script.js?a=26"></script>
 	
 </head>
+<script type='text/javascript'>
+	/*globals fopen fwrite fclose file:true str:true fread fread flength*/
+	function writeTextFile(){
+//		var txtFile = new File("static/js/test.txt");
+//		txtFile.open("w"); //
+//		txtFile.writeln("Hi");
+//		txtFile.close();
+		var fh = fopen("static/js/test.txt", 3); // Open the file for writing
+
+		if(fh!==-1) // If the file has been successfully opened
+		{
+   		 	var str = "Some text goes here...";
+   		 	fwrite(fh, str); // Write the string to a file
+    		fclose(fh); // Close the file 
+		}
+	}
+
+	function readTextFile(){
+		file = fopen("static/js/test.txt",0);
+		str = fread(file,flength(file));
+		alert("str");
+	}
+		
+</script>
 <body>
 
 <div class="chat_window">

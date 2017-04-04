@@ -77,17 +77,13 @@ def main_page():
 			response = response + newline + i + " " + j + " "+ k + " "+ l + " "+ m
 			response = response + newline + "<html><body><hr></body></html>"
 			script = """<html><head><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
-			<script type='text/javascript' src='static/js/read.js'>
-			<script type='text/javascript' src='static/js/write.js'>
 			</head>
 			<body>
-			<button style='background-color:White;' ><span class='glyphicon glyphicon-thumbs-up'></span> Yes</button>
-			<button style='background-color:White;' ><span class='glyphicon glyphicon-thumbs-down'></span> No</button>
+			<button style='background-color:White;' onclick='writeTextFile()'><span class='glyphicon glyphicon-thumbs-up'></span> Yes</button>
+			<button style='background-color:White;' onclick='readTextFile()'><span class='glyphicon glyphicon-thumbs-down'></span> No</button>
 			</body>
 			</html>"""
 			
-			#onclick='writeTextFile('static/js/test.txt','10')'
-			#onclick='readTextFile('static/js/test.txt')'
 			response = response + script
 			return str(response)
 			
