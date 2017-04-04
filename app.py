@@ -74,10 +74,10 @@ def main_page():
 			script = """<html><head><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
 			</head>
 			<body>
-			<a href='#' class='btn btn-info btn-lg'>
+			<a href='static/php/write.php' class='btn btn-info btn-lg'>
           	<span class='glyphicon glyphicon-thumbs-up'></span> Yes
         	</a>
-			<a href='#' class='btn btn-info btn-lg'>
+			<a href='static/php/write.php' class='btn btn-info btn-lg'>
           	<span class='glyphicon glyphicon-thumbs-down'></span> No
         	</a>
 			</body>
