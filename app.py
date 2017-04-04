@@ -84,9 +84,9 @@ def main_page():
 			"<button style='background-color:aqua;' onclick='readFile()'><span class='glyphicon glyphicon-thumbs-down'></span> No</button>"
 			"</body>"
 			"</html>"
-			script = """<html><body>"
+			script = "<html><body>"
 			"<p>Hi</p>"
-			"</body></html>"""
+			"</body></html>"
 			response = response + script
 			return str(response)
 			
