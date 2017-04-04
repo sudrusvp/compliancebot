@@ -80,8 +80,8 @@ def main_page():
 			<script type='text/javascript' src='static/js/read.js'>
 			<script type='text/javascript' src='static/js/write.js'></head>
 			<body>
-			<button style='background-color:aqua;' onclick='writeFile()'><span class='glyphicon glyphicon-thumbs-up'></span> Yes</button>
-			<button style='background-color:aqua;' onclick='readFile()'><span class='glyphicon glyphicon-thumbs-down'></span> No</button>
+			<button style='background-color:aqua;' onclick='writeTextFile('static/js/test.txt','10')'><span class='glyphicon glyphicon-thumbs-up'></span> Yes</button>
+			<button style='background-color:aqua;' onclick='readTextFile('static/js/test.txt')'><span class='glyphicon glyphicon-thumbs-down'></span> No</button>
 			</body>
 			</html>"""
 			response = response + script
