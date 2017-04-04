@@ -76,7 +76,7 @@ def main_page():
 			response = response + newline + f + " " + g + " "+ h
 			response = response + newline + i + " " + j + " "+ k + " "+ l + " "+ m
 			response = response + newline + "<html><body><hr></body></html>"
-			script =  "<html><head><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+			script =  "<html><head><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>"
 				+"<script type='text/javascript' src='static/js/read.js'>"
 				+"<script type='text/javascript' src='static/js/write.js'></head>"
 				+"<body>"
