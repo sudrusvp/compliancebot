@@ -78,7 +78,7 @@ def main_page():
 		if response['intents'] and response['intents'][0]['confidence']:
 			confidence = str(round(response['intents'][0]['confidence'] * 100))
 			response = str(response['output']['text'][0] + "\n" + "<HTML><BODY><hr style='height: 7px;border: 0;box-shadow: 0 10px 10px -10px white inset;width:270px;margin-left:0px'></body></html>I'm "  + confidence + "% certain about this answer!")
-#			newline = "<html><body><br></body></html>"
+			newline = "<html><body><br></body></html>"
 #			response = response + newline + a + " " + b + " "+ c + " "+ d + " "+ e 
 #			response = response + newline + f + " " + g + " "+ h
 #			response = response + newline + i + " " + j + " "+ k + " "+ l + " "+ m
