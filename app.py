@@ -63,17 +63,44 @@ def main_page():
 #		l = str(context['user'][2]['tones'][3]['tone_name']) + "-" + str(round(context['user'][2]['tones'][3]['score'],2))
 #		m = str(context['user'][2]['tones'][4]['tone_name']) + "-" + str(round(context['user'][2]['tones'][4]['score'],2))
 		
+		#for emotion tone
 		i = 0
 		j = 0
 		max = 0.0
 		while i != 5:
-			a = round(context['user'][0]['tones'][i]['score'],2)
-			if a >= max:
-				max = a
+			temp = round(context['user'][0]['tones'][i]['score'],2)
+			if temp >= max:
+				max = temp
 				j = i
 			i+=1
 		
-		final = str(context['user'][0]['tones'][j]['tone_name']) + "-" + str(round(context['user'][0]['tones'][j]['score'],2))
+		final_emotiontone = str(context['user'][0]['tones'][j]['tone_name']) + "-" + str(round(context['user'][0]['tones'][j]['score'],2))
+		
+		#for language tone
+		i = 0
+		j = 0
+		max = 0.0
+		while i != 3:
+			temp = round(context['user'][1]['tones'][i]['score'],2)
+			if temp >= max:
+				max = temp
+				j = i
+			i+=1
+		
+		final_langtone = str(context['user'][1]['tones'][j]['tone_name']) + "-" + str(round(context['user'][1]['tones'][j]['score'],2))
+		
+		#for social tone
+		i = 0
+		j = 0
+		max = 0.0
+		while i != 5:
+			temp = round(context['user'][2]['tones'][i]['score'],2)
+			if temp >= max:
+				max = temp
+				j = i
+			i+=1
+		
+		final_socialtone = str(context['user'][2]['tones'][j]['tone_name']) + "-" + str(round(context['user'][2]['tones'][j]['score'],2))
 		
 		if response['intents'] and response['intents'][0]['confidence']:
 			confidence = str(round(response['intents'][0]['confidence'] * 100))
@@ -82,7 +109,7 @@ def main_page():
 #			response = response + newline + a + " " + b + " "+ c + " "+ d + " "+ e 
 #			response = response + newline + f + " " + g + " "+ h
 #			response = response + newline + i + " " + j + " "+ k + " "+ l + " "+ m
-			response = response + "detected " + final
+			response = response + newline + " detected " + final_emotiontone + newline + " detected " + final_langtone + newline + " detected " + final_socialtone
 			response = response + newline + "<html><body><hr></body></html>"
 			script = """<html><head><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
 			</head>
