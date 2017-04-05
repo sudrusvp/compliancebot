@@ -9,8 +9,8 @@ from flask import render_template
 from flask import request, url_for, make_response
 from watson_developer_cloud import ConversationV1
 from watson_developer_cloud import ToneAnalyzerV3
-import tone_detection
-import cgi
+from os.path import join, dirname
+from watson_developer_cloud import TextToSpeechV1
 
 
 conversation = ConversationV1(
@@ -26,11 +26,17 @@ tone_analyzer = ToneAnalyzerV3(
     password = 'ZC2WBeLbXUXs',
     version = '2016-05-19')
 
-maintainToneHistoryInContext = True 
+#maintainToneHistoryInContext = True 
+
+text_to_speech = TextToSpeechV1(
+    username='1a7263c3-2c84-4a0a-a348-9b02b044e424',
+    password='cg7K0fZ3XgB1',
+    x_watson_learning_opt_out=True)
+
 
 app = Flask(__name__, static_url_path='/static')
-@app.route("/", methods=['GET', 'POST'])
 
+@app.route("/", methods=['GET', 'POST'])
 def main_page():
 
 	if request.method == 'GET':
@@ -46,7 +52,7 @@ def main_page():
 		}
 		#print(json.dumps(context['user'][1]['category_name'],indent=4))
 		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
-		print(json.dumps(response,indent=2))
+		#print(json.dumps(response,indent=2))
 #		a = str(context['user'][0]['category_name']) + "--->" + str(context['user'][0]['tones'][0]['tone_name']) + "-" + str(round(context['user'][0]['tones'][0]['score'],2))
 #		b = str(context['user'][0]['tones'][1]['tone_name']) + "-" + str(round(context['user'][0]['tones'][1]['score'],2))
 #		c = str(context['user'][0]['tones'][2]['tone_name']) + "-" + str(round(context['user'][0]['tones'][2]['score'],2))
