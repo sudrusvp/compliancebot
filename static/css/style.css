@@ -55,7 +55,7 @@
 	left: auto;
 	border-top: 10px solid transparent;
 	border-bottom: 10px solid transparent;
-	border-left: 10px solid #507ea7;
+	border-left: 10px solid white;
  	right: 0px;
 
 }
@@ -78,14 +78,14 @@
 
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
-    border-right: 10px solid #507ea7;
+    border-right: 10px solid #ADD8E6;
   	bottom: 9px;
   	left: 8px;
 }
 
 
 .chatheader{
-	background: #245580;
+	background: #ADD8E6;
 	padding: 10px;
 } 
 
