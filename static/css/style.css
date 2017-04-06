@@ -39,8 +39,8 @@
 	padding: 10px;
 	padding-right: 20px;
 	padding-left: 30px;
-	background: #507ea7;
-	color: aqua;
+	background: white;
+	color: black;
 	border-radius: 5px;
 	display: inline-block;
 }
@@ -64,8 +64,8 @@
 	margin: 10px 0px;
 	padding: 10px;
 	padding-left: 30px;
-	background: #507ea7;
-	color: aqua;
+	background: #ADD8E6;
+	color: black;
 	border-radius: 5px;
 	display: inline-block;
 }
