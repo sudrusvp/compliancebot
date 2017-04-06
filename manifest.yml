@@ -1,5 +1,5 @@
 ---
 applications:
- - name: chatbotecm
+ - name: compliancebot
    random-route: true
    memory: 128M
