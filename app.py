@@ -19,7 +19,6 @@ conversation = ConversationV1(
     version='2017-02-03')
 
 conv_workspace_id = '63426865-ec68-48db-a233-3d58e03ffe67'
-context={}
 
 app = Flask(__name__, static_url_path='/static')
 
@@ -31,12 +30,12 @@ def main_page():
 
 	elif request.method == 'POST':
 	
-		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
+		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = response['context'])
 		print(json.dumps(response,indent=2))
-		if response['intents'] and response['intents'][0]['confidence']:
-			confidence = str(round(response['intents'][0]['confidence'] * 100))
-			response = str(response['output']['text'][0] + "\n" + "<HTML><BODY><hr style='height: 7px;border: 0;box-shadow: 0 10px 10px -10px white inset;width:270px;margin-left:0px'></body></html>I'm "  + confidence + "% certain about this answer!")
-			return str(response)
+#		if response['intents'] and response['intents'][0]['confidence']:
+#			confidence = str(round(response['intents'][0]['confidence'] * 100))
+#			response = str(response['output']['text'][0] + "\n" + "<HTML><BODY><hr style='height: 7px;border: 0;box-shadow: 0 10px 10px -10px white inset;width:270px;margin-left:0px'></body></html>I'm "  + confidence + "% certain about this answer!")
+#			return str(response)
 			
 		return str(response['output']['text'][0])
 		
