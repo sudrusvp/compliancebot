@@ -33,7 +33,7 @@ def main_page():
 			with open('file.txt', 'r') as myfile:
 				data=myfile.read().replace('\n', '')
 				myfile.close()
-		else
+		else:
 			print("file not found.................")
 			
 		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
