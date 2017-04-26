@@ -31,8 +31,8 @@ def main_page():
 		context = {}
 		if os.path.getsize('static/doc/file.txt') > 0:
 			file = open('static/doc/file.txt','r')
-			response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': file.read()},context = {})
-			context = response['context']
+#			response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': file.read()},context = {})
+			context = json.loads(file.read())
 			file.close()
 		else:
 			print('file is empty')
@@ -41,9 +41,12 @@ def main_page():
 		print(json.dumps(response,indent=2))
 		
 		file = open('static/doc/file.txt','w')
-		print("writing " + str(response['input']['text']) + " to file.....")
-		file.write(str(response['input']['text']))
+		print = open("Writing " + str(response['context']) + "to file........")
 		file.close()
+#		file = open('static/doc/file.txt','w')
+#		print("writing " + str(response['input']['text']) + " to file.....")
+#		file.write(str(response['input']['text']))
+#		file.close()
 #		if response['intents'] and response['intents'][0]['confidence']:
 #			confidence = str(round(response['intents'][0]['confidence'] * 100))
 #			response = str(response['output']['text'][0] + "\n" + "<HTML><BODY><hr style='height: 7px;border: 0;box-shadow: 0 10px 10px -10px white inset;width:270px;margin-left:0px'></body></html>I'm "  + confidence + "% certain about this answer!")
