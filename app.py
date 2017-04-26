@@ -30,9 +30,11 @@ def main_page():
 
 	elif request.method == 'POST':
 		if os.path.isfile("static/doc/file.txt") and os.path.getsize("static/doc/file.txt")>0:
-			file = open('static/doc/file.txt','r')
-			print("Last message was " + file.read() + "........")
-			file.close() 
+			with open('file.txt', 'r') as myfile:
+				data=myfile.read().replace('\n', '')
+				myfile.close()
+		else
+			print("file not found.................")
 			
 		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
 		print(json.dumps(response,indent=2))
@@ -40,7 +42,7 @@ def main_page():
 		file = open('static/doc/file.txt','w')
 		file.seek(0)
 		file.truncate()
-		print("writing" + str(response['input']['text']) + " to file.....")
+		print("writing " + str(response['input']['text']) + " to file.....")
 		file.write(str(response['input']['text']))
 		file.close()
 #		if response['intents'] and response['intents'][0]['confidence']:
