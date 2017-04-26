@@ -41,7 +41,7 @@ def main_page():
 		print(json.dumps(response,indent=2))
 		
 		file = open('static/doc/file.txt','w')
-		print = open("Writing " + str(response['context']) + "to file........")
+		print("Writing " + str(response['context']) + "to file........")
 		file.close()
 #		file = open('static/doc/file.txt','w')
 #		print("writing " + str(response['input']['text']) + " to file.....")
