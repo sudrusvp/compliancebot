@@ -30,10 +30,14 @@ def main_page():
 
 	elif request.method == 'POST':
 		
-		file = open('static/doc/file.txt','r')
-		print(file.read())
-		file.close()
-		
+		if os.path.getsize('static/doc/file.txt') > 0:
+			file = open('static/doc/file.txt','r')
+			response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': file.read()},context = context)
+			context = response['context']
+			file.close()
+		else
+			print('file is empty')
+			
 		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
 		print(json.dumps(response,indent=2))
 		
