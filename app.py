@@ -35,7 +35,7 @@ def main_page():
 			response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': file.read()},context = context)
 			context = response['context']
 			file.close()
-		else
+		else:
 			print('file is empty')
 			
 		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
