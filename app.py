@@ -19,7 +19,7 @@ conversation = ConversationV1(
     version='2017-02-03')
 
 conv_workspace_id = '63426865-ec68-48db-a233-3d58e03ffe67'
-
+context = {}
 app = Flask(__name__, static_url_path='/static')
 
 @app.route("/", methods=['GET', 'POST'])
@@ -29,9 +29,20 @@ def main_page():
 		return render_template("index2.html")
 
 	elif request.method == 'POST':
-	
+		if os.path.isfile("static/doc/file.txt") and os.path.getsize("static/doc/file.txt")>0:
+			file = open('static/media/file.txt','r')
+			print("Last message was " + file.read() + "........")
+			file.close() 
+			
 		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = response['context'])
 		print(json.dumps(response,indent=2))
+		
+		file = open('static/media/file.txt','w')
+		file.seek(0)
+		file.truncate()
+		print("writing" + str(response['input']['text']) + " to file.....")
+		file.write(str(response['input']['text']))
+		file.close()
 #		if response['intents'] and response['intents'][0]['confidence']:
 #			confidence = str(round(response['intents'][0]['confidence'] * 100))
 #			response = str(response['output']['text'][0] + "\n" + "<HTML><BODY><hr style='height: 7px;border: 0;box-shadow: 0 10px 10px -10px white inset;width:270px;margin-left:0px'></body></html>I'm "  + confidence + "% certain about this answer!")
