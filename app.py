@@ -30,7 +30,7 @@ def main_page():
 
 	elif request.method == 'POST':
 		if os.path.isfile("static/doc/file.txt") and os.path.getsize("static/doc/file.txt")>0:
-			with open('file.txt', 'r') as myfile:
+			with open('static/doc/file.txt', 'r') as myfile:
 				data=myfile.read().replace('\n', '')
 				myfile.close()
 		else:
