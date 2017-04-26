@@ -34,7 +34,7 @@ def main_page():
 			print("Last message was " + file.read() + "........")
 			file.close() 
 			
-		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = response['context'])
+		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
 		print(json.dumps(response,indent=2))
 		
 		file = open('static/doc/file.txt','w')
