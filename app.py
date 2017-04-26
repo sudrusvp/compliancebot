@@ -19,7 +19,6 @@ conversation = ConversationV1(
     version='2017-02-03')
 
 conv_workspace_id = '63426865-ec68-48db-a233-3d58e03ffe67'
-context = {}
 app = Flask(__name__, static_url_path='/static')
 
 @app.route("/", methods=['GET', 'POST'])
@@ -29,10 +28,10 @@ def main_page():
 		return render_template("index2.html")
 
 	elif request.method == 'POST':
-		
+		context = {}
 		if os.path.getsize('static/doc/file.txt') > 0:
 			file = open('static/doc/file.txt','r')
-			response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': file.read()},context = context)
+			response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': file.read()},context = {})
 			context = response['context']
 			file.close()
 		else:
