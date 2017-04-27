@@ -3,7 +3,7 @@ from ibm_db import connect
 
 def connection():
 	try:
-		conn = connect('DATABASE=IGI_DB;'
+		conn = ibm_db.connect('DATABASE=IGI_DB;'
 						'HOSTNAME=10.51.227.228;'
 						'PORT=50000;'
 						'PROTOCOL=TCPIP;'
