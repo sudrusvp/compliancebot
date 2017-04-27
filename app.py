@@ -4,12 +4,12 @@ import os
 import os.path
 import sys
 import logging
+import ibm_db
 from flask import Flask
 from flask import render_template
 from flask import request, url_for, make_response
 from watson_developer_cloud import ConversationV1
 from os.path import join, dirname
-import connect_db
 from connect_db import connection
 
 

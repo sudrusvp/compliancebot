@@ -1,4 +1,3 @@
-import ibm_db
 from ibm_db import connect
 
 def connection():
