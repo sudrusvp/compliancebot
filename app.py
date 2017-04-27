@@ -5,7 +5,6 @@ import os.path
 import sys
 import logging
 import ibm_db
-import connect_db
 from flask import Flask
 from flask import render_template
 from flask import request, url_for, make_response

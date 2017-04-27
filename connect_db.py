@@ -9,5 +9,7 @@ def connection():
 						'PROTOCOL=TCPIP;'
 						'UID=igiinst;'
 						'PWD=ideas;', '', '')
-	except Exception:
-		print "DB connection error"
+	except:
+		print "DB connection error......!!"
+	else:
+		print("connection successful......!!")
