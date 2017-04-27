@@ -4,12 +4,13 @@ import os
 import os.path
 import sys
 import logging
+import connect_db as db
 from flask import Flask
 from flask import render_template
 from flask import request, url_for, make_response
 from watson_developer_cloud import ConversationV1
 from os.path import join, dirname
-from connect_db import connection
+
 
 
 conversation = ConversationV1(
@@ -47,7 +48,7 @@ def main_page():
 #			confidence = str(round(response['intents'][0]['confidence'] * 100))
 #			response = str(response['output']['text'][0] + "\n" + "<HTML><BODY><hr style='height: 7px;border: 0;box-shadow: 0 10px 10px -10px white inset;width:270px;margin-left:0px'></body></html>I'm "  + confidence + "% certain about this answer!")
 #			return str(response)
-		connection()
+		db.connection()
 		return str(response['output']['text'][0])
 		
 

@@ -8,7 +8,8 @@ def connection():
 #		conn = ibm_db.connect("dsn=jdbc:db2://10.51.227.228:50000/IGI_DB;PROTOCOL=TCPIP;UID=igiinst;PWD=ideas;", "","")
 		print "Connection succeeded..........!!"
 	except:
-		print "connection unsuccessful.....!!"+ibm_db.conn_errormsg()
+		print "connection unsuccessful.....!!"
+		print ibm_db.conn_errormsg()
 	finally:
 		try:
 			ibm_db.close(conn)
