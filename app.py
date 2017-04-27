@@ -48,7 +48,7 @@ def main_page():
 #			confidence = str(round(response['intents'][0]['confidence'] * 100))
 #			response = str(response['output']['text'][0] + "\n" + "<HTML><BODY><hr style='height: 7px;border: 0;box-shadow: 0 10px 10px -10px white inset;width:270px;margin-left:0px'></body></html>I'm "  + confidence + "% certain about this answer!")
 #			return str(response)
-			
+		connection()
 		return str(response['output']['text'][0])
 		
 
