@@ -3,7 +3,7 @@ from ibm_db import connect
 
 def connection():
 	try:
-		conn = ibm_db.connect("DRIVER={DB2};DATABASE=IGI PSL 5.2.2;HOSTNAME=10.51.227.228;PORT=50000;PROTOCOL=UDP;UID=igiinst;PWD=ideas;", "","")
+		conn = ibm_db.connect("DRIVER={IBM DB2 JDBC DRIVER};DATABASE=IGI PSL 5.2.2;HOSTNAME=10.51.227.228;PORT=50000;PROTOCOL=TCPIP;UID=igiinst;PWD=ideas;", "admin","admin")
 		print "Connection succeeded..........!!"
 	except:
 		print "connection unsuccessful.....!!"
