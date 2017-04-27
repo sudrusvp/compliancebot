@@ -8,9 +8,9 @@ from flask import Flask
 from flask import render_template
 from flask import request, url_for, make_response
 from watson_developer_cloud import ConversationV1
-from watson_developer_cloud import ToneAnalyzerV3
 from os.path import join, dirname
-from watson_developer_cloud import TextToSpeechV1
+import connect_db
+from connect_db import connection
 
 
 conversation = ConversationV1(
@@ -31,7 +31,6 @@ def main_page():
 		context = {}
 		if os.path.getsize('static/doc/file.txt') > 0:
 			file = open('static/doc/file.txt','r')
-#			response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': file.read()},context = {})
 			context = json.loads(file.read())
 			file.close()
 		else:
@@ -44,10 +43,7 @@ def main_page():
 		print("Writing " + str(json.dumps(response['context'])) + "to file........")
 		file.write(str(json.dumps(response['context'])))
 		file.close()
-#		file = open('static/doc/file.txt','w')
-#		print("writing " + str(response['input']['text']) + " to file.....")
-#		file.write(str(response['input']['text']))
-#		file.close()
+
 #		if response['intents'] and response['intents'][0]['confidence']:
 #			confidence = str(round(response['intents'][0]['confidence'] * 100))
 #			response = str(response['output']['text'][0] + "\n" + "<HTML><BODY><hr style='height: 7px;border: 0;box-shadow: 0 10px 10px -10px white inset;width:270px;margin-left:0px'></body></html>I'm "  + confidence + "% certain about this answer!")
