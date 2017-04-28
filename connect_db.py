@@ -9,12 +9,12 @@ def connection():
 		conn = MySQLdb.connect("localhost","root","admin","test" )
 #		conn=MySQLdb.connect(host=####, user=####, passwd=####, db=####)
 		
-		print "Connection succeeded..........!!"
-	except:
-		print "connection unsuccessful.....!!"
-#		print ibm_db.conn_errormsg()
-	finally:
-		try:
-			conn.close()
-		except:
-			print "can not close conn......!!"
+#		print "Connection succeeded..........!!"
+#	except:
+#		print "connection unsuccessful.....!!"
+##		print ibm_db.conn_errormsg()
+#	finally:
+#		try:
+#			conn.close()
+#		except:
+#			print "can not close conn......!!"
