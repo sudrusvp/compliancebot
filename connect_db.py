@@ -10,7 +10,7 @@ def connection():
 		
 		print "Connection succeeded..........!!"
 	except Exception as e:
-		print("connection unsuccessful.....!!  "+e)
+		print e
 #		print ibm_db.conn_errormsg()
 	finally:
 		try:
