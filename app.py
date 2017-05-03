@@ -29,19 +29,13 @@ def main_page():
 	if request.method == 'GET':
 		global fullpath
 		global context
-		filename = '/static/doc/myfile-%s.txt'%datetime.datetime.now().strftime('%Y-%m-%d')
+		filename = 'static/doc/myfile-%s.txt'%datetime.datetime.now().strftime('%Y%m%d-%H%M&S')
+		print filename
 		fullpath = filename
-		try:
-			context_file = open(fullpath,'r+')
-			context_file.write(context)
-		except:
-			print('can not create the file!')
-		finally:
-			try:
-				context_file.close()
-				print('file close!')
-			except:
-				print('can not close the file!')
+		print fullpath
+		context_file = open(fullpath,'w+')
+		context_file.write(context)
+		context_file.close()
 				
 		return render_template("index2.html")
 		
