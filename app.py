@@ -45,24 +45,25 @@ def main_page():
 		file.write(str(json.dumps(response['context'])))
 		file.close()
 		
-		feedb_file = open('static/doc/feedback.txt','w+')
+		feedb_file = open('static/doc/feedback.txt','a+')
 		intent = str(response['intents'][0]['intent'])
 		print('found '+ intent)
 		reader = csv.reader(feedb_file)
 		for row in reader:
 			if row[0]==intent:
+				print('intent already exists! so breaking the loop')
 				break
-			else:
-				writer = csv.writer(feedb_file)
-				new_row=[intent,0,0]
-				writer.writerows(new_row)
-			
+		print('writing '+ intent+" list in the file")
+		writer = csv.writer(feedb_file)
+		new_row=[intent,0,0]
+		writer.writerows(new_row)	
 		feedb_file.close()
 		
 		file2 = open('static/doc/feedback.txt','r')
 		reader = csv.reader(file2)
 		for row in reader:
 			print row
+		file2.close()
 		
 		script1 = """<html><head><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
 			</head>
