@@ -4,6 +4,7 @@ import os
 import os.path
 import sys
 import logging
+from requests import session
 import connect_db as db
 from flask import Flask
 from flask import render_template
@@ -32,11 +33,12 @@ def main_page():
 		if os.path.getsize('static/doc/file.txt') > 0:
 			file = open('static/doc/file.txt','r')
 			context = json.loads(file.read())
+			session['context'] = context
 			file.close()
 		else:
 			print('file is empty')
 			
-		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
+		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = session['context'])
 		print(json.dumps(response,indent=2))
 		
 		file = open('static/doc/file.txt','w')

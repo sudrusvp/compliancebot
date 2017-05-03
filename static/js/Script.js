@@ -6,37 +6,12 @@ $(function(){
 	var tail = "</div> </div> </div>";
 		
 	function send() {
-		//console.log("inside send1")
 		var data = {
-			"message" : $("#message").val(),
-			
+			"message" : $("#message").val(),	
 		};
-		//console.log("inside send2")
 		$(sentHead+data.message+tail).hide().appendTo('.chatdiv').show("puff", {times : 3}, 200);
-		//console.log("inside send3")
 		$(".chatdiv").animate({ scrollTop: $('.chatdiv').prop("scrollHeight")}, 1000);
-		//console.log("inside send4")
 		$("#message").val("");
-		//console.log("inside send5")
-		//console.log("calling..")
-		
-		/*
-		$.ajax({url: "/", type:'POST',
-		success:function(res){
-			//console.log("inside post1")
-			//console.log(res)
-			$(receivedHead+res+tail).hide().appendTo('.chatdiv').show("puff", {times : 3}, 200);
-			//console.log("inside post2")
-			$(".chatdiv").animate({ scrollTop: $('.chatdiv').prop("scrollHeight")}, 1000);
-			//console.log("inside post3")
-			},
-			
-		error: function(err){
-            $(receivedHead+'Can you say that again'+tail).hide().appendTo('.chatdiv').show("puff", {times : 3}, 200);
-			//console.log("inside post2")
-			$(".chatdiv").animate({ scrollTop: $('.chatdiv').prop("scrollHeight")}, 1000);
-        }});*/
-        
         
 		$.post("/",data,function(res,err){
 			
@@ -56,7 +31,7 @@ $(function(){
 			//console.log("inside post3")
 			});
 
-	};
+		};
 
 
 	$("#message").keypress(function(event) {
