@@ -25,6 +25,7 @@ app = Flask(__name__, static_url_path='/static')
 def main_page():
 
 	if request.method == 'GET':
+		print vcap_request_id
 		return render_template("index2.html")
 
 	elif request.method == 'POST':
