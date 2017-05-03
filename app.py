@@ -25,8 +25,10 @@ context = {}
 
 @app.route("/", methods=['GET', 'POST'])
 def main_page():
-
+	
 	if request.method == 'GET':
+		global fullpath
+		global context
 		filename = '/static/doc/myfile-%s.txt'%datetime.datetime.now().strftime('%Y-%m-%d')
 		fullpath = filename
 		try:
@@ -44,7 +46,8 @@ def main_page():
 		return render_template("index2.html")
 		
 	elif request.method == 'POST':
-	
+		global fullpath
+		global context
 		file = open(fullpath,'r')
 		context = json.loads(file.read())
 		file.close()
