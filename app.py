@@ -17,9 +17,11 @@ conversation = ConversationV1(
     username='8b39e53f-697e-4c3a-aee7-efc78061bce0',
     password='SehjL5SoP2wl',
     version='2017-02-03')
-fullpath = ''
+
 conv_workspace_id = '63426865-ec68-48db-a233-3d58e03ffe67'
 app = Flask(__name__, static_url_path='/static')
+fullpath = "xyz"
+context = {}
 
 @app.route("/", methods=['GET', 'POST'])
 def main_page():
@@ -29,26 +31,24 @@ def main_page():
 		fullpath = filename
 		try:
 			context_file = open(fullpath,'r+')
+			context_file.write(context)
 		except:
 			print('can not create the file!')
 		finally:
 			try:
 				context_file.close()
-				print('file')
+				print('file close!')
 			except:
 				print('can not close the file!')
+				
 		return render_template("index2.html")
 		
 	elif request.method == 'POST':
 	
-		context = {}
-		if os.path.getsize(fullpath) > 0:
-			file = open(fullpath,'r')
-			context = json.loads(file.read())
-			file.close()
-		else:
-			print('file is empty')
-			
+		file = open(fullpath,'r')
+		context = json.loads(file.read())
+		file.close()
+		
 		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
 		print(json.dumps(response,indent=2))
 		
