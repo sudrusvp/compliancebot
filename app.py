@@ -43,13 +43,26 @@ def main_page():
 		print("Writing " + str(json.dumps(response['context'])) + "to file........")
 		file.write(str(json.dumps(response['context'])))
 		file.close()
-
+		
+		script1 = """<html><head><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+			</head>
+			<body>
+			<hr>
+			<a href='#' class='btn btn-info btn-lg' onclick='yes()'>
+          	<span class='glyphicon glyphicon-thumbs-up'></span> Yes
+        	</a>
+			<a href='#' class='btn btn-info btn-lg' onclick='no()'>
+          	<span class='glyphicon glyphicon-thumbs-down'></span> No
+        	</a>
+			</body>
+			</html>"""
+		response = str(response['output']['text'][0]) + script1
 #		if response['intents'] and response['intents'][0]['confidence']:
 #			confidence = str(round(response['intents'][0]['confidence'] * 100))
 #			response = str(response['output']['text'][0] + "\n" + "<HTML><BODY><hr style='height: 7px;border: 0;box-shadow: 0 10px 10px -10px white inset;width:270px;margin-left:0px'></body></html>I'm "  + confidence + "% certain about this answer!")
 #			return str(response)
-		db.connection()
-		return str(response['output']['text'][0])
+#		db.connection()
+		return str(response)
 		
 
 if __name__ == "__main__":
