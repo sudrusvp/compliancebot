@@ -25,9 +25,9 @@ app = Flask(__name__, static_url_path='/static')
 def main_page():
 
 	if request.method == 'GET':
-		print vcap_request_id
-		return render_template("index2.html")
-
+		val=render_template("index2.html")
+		print val
+		
 	elif request.method == 'POST':
 	
 		context = {}
@@ -41,7 +41,7 @@ def main_page():
 		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
 		print(json.dumps(response,indent=2))
 		
-		file = open('static/doc/file.txt','w')
+		file = open('static/doc/file.txt','w+')
 		print("Writing " + str(json.dumps(response['context'])) + "to file........")
 		file.write(str(json.dumps(response['context'])))
 		file.close()
