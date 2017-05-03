@@ -25,10 +25,18 @@ app = Flask(__name__, static_url_path='/static')
 def main_page():
 
 	if request.method == 'GET':
-		filename = str(datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))+".txt"
-		fullpath = 'static'+'/'+'doc'+'/'+filename
-		context_file = open(fullpath,'w')
-		context_file.close()
+		filename = '/static/doc/myfile-%s.txt'%datetime.datetime.now().strftime('%Y-%m-%d')
+		fullpath = filename
+		try:
+			context_file = open(fullpath,'r+')
+		except:
+			print('can not create the file!')
+		finally:
+			try:
+				context_file.close()
+				print('file')
+			except:
+				print('can not close the file!')
 		return render_template("index2.html")
 		
 	elif request.method == 'POST':
@@ -44,7 +52,7 @@ def main_page():
 		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
 		print(json.dumps(response,indent=2))
 		
-		file = open(fullpath,'w+')
+		file = open(fullpath,'w')
 		print("Writing " + str(json.dumps(response['context'])) + "to file........")
 		file.write(str(json.dumps(response['context'])))
 		file.close()
