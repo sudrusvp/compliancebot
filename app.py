@@ -46,6 +46,15 @@ def main_page():
 		
 		
 		script1 = """<html><head><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+			<script type="text/javascript">
+			/*eslint-env jquery */
+			function yes() {
+				alert("Thank you!");
+			}
+			function no() {
+				alert("Thank you!");
+			}
+			</script>
 			</head>
 			<body>
 			<hr>
@@ -54,7 +63,7 @@ def main_page():
         	</a>
 			<a href='#' class='btn btn-info btn-lg' onclick='no()'>
           	<span class='glyphicon glyphicon-thumbs-down'></span> No
-        	</a>
+    		</a>
 			</body>
 			</html>"""
 		response = str(response['output']['text'][0]) + script1
