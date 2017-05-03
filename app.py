@@ -3,7 +3,7 @@ import urllib
 import os
 import os.path
 import sys
-import logging
+import datetime
 import connect_db as db
 from flask import Flask
 from flask import render_template
@@ -17,7 +17,7 @@ conversation = ConversationV1(
     username='8b39e53f-697e-4c3a-aee7-efc78061bce0',
     password='SehjL5SoP2wl',
     version='2017-02-03')
-
+fullpath = ''
 conv_workspace_id = '63426865-ec68-48db-a233-3d58e03ffe67'
 app = Flask(__name__, static_url_path='/static')
 
@@ -25,13 +25,18 @@ app = Flask(__name__, static_url_path='/static')
 def main_page():
 
 	if request.method == 'GET':
+		filename = str(datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))+".txt"
+		fullpath = "static/doc/"+filename
+		context_file = open(fullpath,'w+')
+		context_file.close()
+		file.close
 		return render_template("index2.html")
 		
 	elif request.method == 'POST':
 	
 		context = {}
-		if os.path.getsize('static/doc/file.txt') > 0:
-			file = open('static/doc/file.txt','r')
+		if os.path.getsize(fullpath) > 0:
+			file = open(fullpath,'r')
 			context = json.loads(file.read())
 			file.close()
 		else:
@@ -40,7 +45,7 @@ def main_page():
 		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
 		print(json.dumps(response,indent=2))
 		
-		file = open('static/doc/file.txt','w+')
+		file = open(fullpath,'w+')
 		print("Writing " + str(json.dumps(response['context'])) + "to file........")
 		file.write(str(json.dumps(response['context'])))
 		file.close()
