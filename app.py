@@ -39,6 +39,9 @@ def main_page():
 		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
 		print(json.dumps(response,indent=2))
 		
+		newfile = open('static/doc/file2.txt','w+')
+		newfile.close()
+		
 		file = open('static/doc/file.txt','w')
 		print("Writing " + str(json.dumps(response['context'])) + "to file........")
 		file.write(str(json.dumps(response['context'])))

@@ -15,6 +15,7 @@ $(function(){
         
 		$.post("/",data,function(res,err){
 			
+			
 			if (err !== 'success'){
 				console.log('error occured'+err);
 				$(receivedHead+'Can you please say that again'+tail).hide().appendTo('.chatdiv').show("puff", {times : 3}, 200);
