@@ -3,6 +3,7 @@ import urllib
 import os
 import os.path
 import sys
+import csv
 import logging
 import connect_db as db
 from flask import Flask
@@ -43,6 +44,20 @@ def main_page():
 		print("Writing " + str(json.dumps(response['context'])) + "to file........")
 		file.write(str(json.dumps(response['context'])))
 		file.close()
+		
+		feedb_file = open('static/doc/feedback.txt','w+')
+		intent = str(response['intents'][0]['intent'])
+		print('found '+ intent)
+		reader = csv.reader(feedb_file)
+		for row in reader:
+			if row[0]==intent:
+				break
+			else:
+				writer = csv.writer(feedb_file)
+				new_row=[intent,0,0]
+				writer.writerows(new_row)
+			
+		
 		
 		script1 = """<html><head><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
 			</head>
