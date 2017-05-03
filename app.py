@@ -40,13 +40,18 @@ def main_page():
 		print(json.dumps(response,indent=2))
 		
 		newfile = open('static/doc/file2.txt','w+')
+		newfile.write("file created!!!!")
 		newfile.close()
+		
 		
 		file = open('static/doc/file.txt','w')
 		print("Writing " + str(json.dumps(response['context'])) + "to file........")
 		file.write(str(json.dumps(response['context'])))
 		file.close()
-		
+	
+		file2=open('static/doc/file2.txt','r')
+		print(file2.read())
+		file2.close()
 		
 		script1 = """<html><head><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
 			<script type="text/javascript">
