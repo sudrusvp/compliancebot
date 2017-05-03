@@ -25,8 +25,7 @@ app = Flask(__name__, static_url_path='/static')
 def main_page():
 
 	if request.method == 'GET':
-		val=render_template("index2.html")
-		print val
+		return render_template("index2.html")
 		
 	elif request.method == 'POST':
 	
