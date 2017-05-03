@@ -29,7 +29,6 @@ def main_page():
 		fullpath = 'static'+'/'+'doc'+'/'+filename
 		context_file = open(fullpath,'w')
 		context_file.close()
-		file.close
 		return render_template("index2.html")
 		
 	elif request.method == 'POST':
