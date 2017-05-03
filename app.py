@@ -57,7 +57,12 @@ def main_page():
 				new_row=[intent,0,0]
 				writer.writerows(new_row)
 			
+		feedb_file.close()
 		
+		file2 = open('static/doc/feedback.txt','r')
+		reader = csv.reader(file2)
+		for row in reader:
+			print row
 		
 		script1 = """<html><head><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
 			</head>
