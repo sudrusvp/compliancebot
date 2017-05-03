@@ -26,8 +26,8 @@ def main_page():
 
 	if request.method == 'GET':
 		filename = str(datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))+".txt"
-		fullpath = "static/doc/"+filename
-		context_file = open(fullpath,'w+')
+		fullpath = 'static'+'/'+'doc'+'/'+filename
+		context_file = open(fullpath,'w')
 		context_file.close()
 		file.close
 		return render_template("index2.html")
