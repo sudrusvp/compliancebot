@@ -30,6 +30,7 @@ def main_page():
 	if request.method == 'GET':
 		print "inside get...."
 		global fullpath
+		print(str(request.environ['REMOTE_ADDR']))
 		fullpath = 'myfile-%s.txt'%datetime.datetime.now().strftime('%Y%m%d-%H%M%S%f')
 		print fullpath
 		context_file = open(fullpath,'w+')
