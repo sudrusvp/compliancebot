@@ -33,7 +33,7 @@ def main_page():
 		print filename
 		print fullpath
 		fullpath = 'static/doc/abc.txt'
-		context_file = open(fullpath,'w+')
+		context_file = open('static/doc/abc.txt','w+')
 		context_file.write(context)
 		context_file.close()
 				
