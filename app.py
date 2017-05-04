@@ -21,30 +21,26 @@ conversation = ConversationV1(
 conv_workspace_id = '63426865-ec68-48db-a233-3d58e03ffe67'
 app = Flask(__name__, static_url_path='/static')
 fullpath = "xyz"
-context = {}
 
 @app.route("/", methods=['GET', 'POST'])
 def main_page():
 	
 	if request.method == 'GET':
 		global fullpath
-		global context
-		filename = 'static/doc/myfile-%s.txt'%datetime.datetime.now().strftime('%Y%m%d-%H%M%S')
-		print filename
+		fullpath = 'myfile-%s.txt'%datetime.datetime.now().strftime('%Y%m%d-%H%M%S')
 		print fullpath
-		fullpath = 'static/doc/abc.txt'
-		context_file = open('abc.txt','w+')
-		context_file.write(context)
+		context_file = open(fullpath,'w+')
 		context_file.close()
 				
 		return render_template("index2.html")
 		
 	elif request.method == 'POST':
 		global fullpath
-		global context
-		file = open(fullpath,'r')
-		context = json.loads(file.read())
-		file.close()
+		context = {}
+		if os.path.getsize(fullpath) > 0:
+			file = open(fullpath,'r')
+			context = json.loads(file.read())
+			file.close()
 		
 		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
 		print(json.dumps(response,indent=2))
