@@ -27,7 +27,7 @@ def main_page():
 	
 	if request.method == 'GET':
 		global fullpath
-		fullpath = 'myfile-%s.txt'%datetime.datetime.now().strftime('%Y%m%d-%H%M%S')
+		fullpath = 'myfile-%s.txt'%datetime.datetime.now().strftime('%Y%m%d-%H%M%S%f')
 		print fullpath
 		context_file = open(fullpath,'w+')
 		context_file.close()
