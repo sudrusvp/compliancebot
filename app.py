@@ -28,29 +28,17 @@ app = Flask(__name__, static_url_path='/static')
 @app.route("/", methods=['GET', 'POST'])
 def main_page():
 	print "inside main"
-	if request.method == 'GET':
-		print "inside get...."
-		mac=str(get_mac())
-		fullpath = mac+".txt"
-		print fullpath
-		context_file = open(fullpath,'w+')
-		context_file.write("hi")
-		context_file.close()
-		print "leaving get........"
+		if request.method == 'GET':
 		return render_template("index2.html")
-		
+
 	elif request.method == 'POST':
-		print "inside post method"
 		context = {}
-		mac=str(get_mac())
-		fullpath = mac+".txt"
-		print fullpath
-		file = open(fullpath,'r')
-		if file.read() == "hi":
-			print()
-		else:
+		if os.path.getsize('static/doc/file.txt') > 0:
+			file = open('static/doc/file.txt','r')
 			context = json.loads(file.read())
 			file.close()
+		else:
+			print('file is empty')
 		
 		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
 		print(json.dumps(response,indent=2))
@@ -81,7 +69,7 @@ def main_page():
     		</a>
 			</body>
 			</html>"""
-#		response = str(response['output']['text'][0]) + script1
+		response = str(response['output']['text'][0]) + script1
 		print "leaving post method"
 		return str(response)
 		
