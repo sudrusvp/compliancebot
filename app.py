@@ -22,16 +22,14 @@ conv_workspace_id = '63426865-ec68-48db-a233-3d58e03ffe67'
 
 app = Flask(__name__, static_url_path='/static')
 
-fullpath = "xyz"
 
 @app.route("/", methods=['GET', 'POST'])
 def main_page():
 	print "inside main"
 	if request.method == 'GET':
 		print "inside get...."
-		global fullpath
-		print(str(request.environ['REMOTE_ADDR']))
-		fullpath = 'myfile-%s.txt'%datetime.datetime.now().strftime('%Y%m%d-%H%M%S%f')
+		ip = str(request.environ['REMOTE_ADDR'])
+		fullpath = ip+".txt"
 		print fullpath
 		context_file = open(fullpath,'w+')
 		context_file.close()
@@ -41,7 +39,8 @@ def main_page():
 	elif request.method == 'POST':
 		print "inside post method"
 		context = {}
-		global fullpath
+		ip = str(request.environ['REMOTE_ADDR'])
+		fullpath=ip+".txt"
 		if os.path.getsize(fullpath) > 0:
 			file = open(fullpath,'r')
 			context = json.loads(file.read())
