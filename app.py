@@ -46,8 +46,8 @@ def main_page():
 		fullpath = mac+".txt"
 		print fullpath
 		file = open(fullpath,'r')
-		if file.read == "hi":
-			break
+		if file.read() == "hi":
+			print()
 		else:
 			context = json.loads(file.read())
 			file.close()
