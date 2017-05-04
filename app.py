@@ -10,6 +10,8 @@ from flask import render_template
 from flask import request, url_for, make_response
 from watson_developer_cloud import ConversationV1
 from os.path import join, dirname
+from uuid import getnode as get_mac
+
 
 
 
@@ -28,10 +30,11 @@ def main_page():
 	print "inside main"
 	if request.method == 'GET':
 		print "inside get...."
-		ip = str(request.environ['REMOTE_ADDR'])
-		fullpath = ip+".txt"
+		mac=str(get_mac())
+		fullpath = mac+".txt"
 		print fullpath
 		context_file = open(fullpath,'w+')
+		context_file.write("hi")
 		context_file.close()
 		print "leaving get........"
 		return render_template("index2.html")
@@ -39,11 +42,13 @@ def main_page():
 	elif request.method == 'POST':
 		print "inside post method"
 		context = {}
-		ip = str(request.environ['REMOTE_ADDR'])
-		fullpath=ip+".txt"
+		mac=str(get_mac())
+		fullpath = mac+".txt"
 		print fullpath
-		if os.path.getsize(fullpath) > 0:
-			file = open(fullpath,'r')
+		file = open(fullpath,'r')
+		if file.read == "hi":
+			break
+		else:
 			context = json.loads(file.read())
 			file.close()
 		
@@ -76,7 +81,7 @@ def main_page():
     		</a>
 			</body>
 			</html>"""
-		response = str(response['output']['text'][0]) + script1
+#		response = str(response['output']['text'][0]) + script1
 		print "leaving post method"
 		return str(response)
 		
