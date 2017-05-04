@@ -41,6 +41,7 @@ def main_page():
 		context = {}
 		ip = str(request.environ['REMOTE_ADDR'])
 		fullpath=ip+".txt"
+		print fullpath
 		if os.path.getsize(fullpath) > 0:
 			file = open(fullpath,'r')
 			context = json.loads(file.read())
