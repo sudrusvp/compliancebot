@@ -1,34 +1,35 @@
 /*eslint-env jquery, browser*/
 $(function(){
-
+	console.log("inside js function");
 	var sentHead = "<div class='row' style='margin: 5px 0px;'> <div class='col-sm-offset-4 col-sm-8 text-right' '> <div class='sent text-left' >";
 	var receivedHead = "<div class='row' style='margin: 5px 0px;'> <div class='col-sm-8 text-left' '> <div class='received text-left' >";
 	var tail = "</div> </div> </div>";
 		
 	function send() {
+		console.log("inside js send function");
 		var data = {
 			"message" : $("#message").val(),	
 		};
-		$(sentHead+data.message+tail).hide().appendTo('.chatdiv').show("puff", {times : 3}, 200);
-		$(".chatdiv").animate({ scrollTop: $('.chatdiv').prop("scrollHeight")}, 1000);
+		$(sentHead+data.message+tail).hide().appendTo(".chatdiv").show("puff", {times : 3}, 200);
+		$(".chatdiv").animate({ scrollTop: $(".chatdiv").prop("scrollHeight")}, 1000);
 		$("#message").val("");
         
 		$.post("/",data,function(res,err){
 			
-			
-			if (err !== 'success'){
-				console.log('error occured'+err);
-				$(receivedHead+'Can you please say that again'+tail).hide().appendTo('.chatdiv').show("puff", {times : 3}, 200);
+			console.log("inside js post function");
+			if (err !== "success"){
+				console.log("error occured"+err);
+				$(receivedHead+"Can you please say that again"+tail).hide().appendTo(".chatdiv").show("puff", {times : 3}, 200);
 				//console.log("inside post2")
-				$(".chatdiv").animate({ scrollTop: $('.chatdiv').prop("scrollHeight")}, 1000);
+				$(".chatdiv").animate({ scrollTop: $(".chatdiv").prop("scrollHeight")}, 1000);
 			}
 			//console.log("inside post1")
 			//console.log(res)
 
 
-			$(receivedHead+res+tail).hide().appendTo('.chatdiv').show("puff", {times : 3}, 200);
+			$(receivedHead+res+tail).hide().appendTo(".chatdiv").show("puff", {times : 3}, 200);
 			//console.log("inside post2")
-			$(".chatdiv").animate({ scrollTop: $('.chatdiv').prop("scrollHeight")}, 1000);
+			$(".chatdiv").animate({ scrollTop: $(".chatdiv").prop("scrollHeight")}, 1000);
 			//console.log("inside post3")
 			});
 

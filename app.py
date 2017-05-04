@@ -17,23 +17,30 @@ conversation = ConversationV1(
     username='8b39e53f-697e-4c3a-aee7-efc78061bce0',
     password='SehjL5SoP2wl',
     version='2017-02-03')
-
+print """<html></head><script>console.log('inside global app....');</script></head></html>"""
 conv_workspace_id = '63426865-ec68-48db-a233-3d58e03ffe67'
+
 app = Flask(__name__, static_url_path='/static')
+
+fullpath = "xyz"
 
 @app.route("/", methods=['GET', 'POST'])
 def main_page():
-	fullpath = "xyz"
+	print """<html></head><script>console.log('inside main....')</script></head></html>"""
 	if request.method == 'GET':
+		print """<html></head><script>console.log('inside GET....')</script></head></html>"""
+		global fullpath
 		fullpath = 'myfile-%s.txt'%datetime.datetime.now().strftime('%Y%m%d-%H%M%S%f')
 		print fullpath
 		context_file = open(fullpath,'w+')
 		context_file.close()
-				
+		print """<html></head><script>console.log('leaving GET...')</script></head></html>"""
 		return render_template("index2.html")
 		
 	elif request.method == 'POST':
+		print """<html></head><script>console.log('inside POST...')</script></head></html>"""
 		context = {}
+		global fullpath
 		if os.path.getsize(fullpath) > 0:
 			file = open(fullpath,'r')
 			context = json.loads(file.read())
@@ -69,12 +76,14 @@ def main_page():
 			</body>
 			</html>"""
 		response = str(response['output']['text'][0]) + script1
+		print """<html></head><script>console.log('LEaving POST....')</script></head></html>"""
 		return str(response)
 		
 
 if __name__ == "__main__":
 	port = int(os.getenv('PORT', 5000))
 	print "Starting app on port %d" % port
+	print """<html></head><script>console.log('started server!!....');</script></head></html>"""
 	app.run(debug=True, port=port, host='0.0.0.0')
 	
 	
