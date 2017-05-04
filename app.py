@@ -29,10 +29,10 @@ def main_page():
 	if request.method == 'GET':
 		global fullpath
 		global context
-		filename = 'myfile-%s.txt'%datetime.datetime.now().strftime('%Y%m%d-%H%M%S')
-		fullpath = os.path.join('static/doc/',filename)
+		filename = 'static/doc/myfile-%s.txt'%datetime.datetime.now().strftime('%Y%m%d-%H%M%S')
 		print filename
 		print fullpath
+		fullpath = 'static/doc/abc.txt'
 		context_file = open(fullpath,'w+')
 		context_file.write(context)
 		context_file.close()
