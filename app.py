@@ -70,8 +70,8 @@ def main_page():
 			</body>
 			</html>"""
 		script2 = """<html>
-			<p style='visibility:hidden' id='context'>{code}</p>
-		</html>""".format(code=str(json.dumps(response['context'])))
+			<p style='visibility:hidden;' id='context' name='context'>{code}</p>
+			</html>""".format(code=str(json.dumps(response['context'])))
 		response = str(response['output']['text'][0]) + script1+script2
 		print "leaving post method"
 		return str(response)
