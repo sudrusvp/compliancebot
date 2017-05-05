@@ -35,7 +35,8 @@ $(function(){
 			//console.log("inside post3")
 			});
 
-		};
+		}
+		
 
 
 	$("#message").keypress(function(event) {
@@ -57,6 +58,7 @@ $(function(){
 		$("#message").val(text);
 		//send()
 	}
+	
 });
 
 

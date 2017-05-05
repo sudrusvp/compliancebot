@@ -3,14 +3,12 @@ import urllib
 import os
 import os.path
 import sys
-import datetime
-import connect_db as db
-from flask import Flask
 from flask import render_template
 from flask import request, url_for, make_response
 from watson_developer_cloud import ConversationV1
 from os.path import join, dirname
-from uuid import getnode as get_mac
+from flask import Flask, session
+from flask.ext.session import Session
 
 
 
@@ -79,7 +77,6 @@ def main_page():
 		print "leaving post method"
 		return str(response)
 		
-
 if __name__ == "__main__":
 	port = int(os.getenv('PORT', 5000))
 	print "Starting app on port %d" % port
