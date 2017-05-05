@@ -7,8 +7,7 @@ from flask import render_template
 from flask import request, url_for, make_response
 from watson_developer_cloud import ConversationV1
 from os.path import join, dirname
-from flask import Flask, session
-from flask.ext.session import Session
+from flask import Flask
 
 
 
@@ -49,6 +48,20 @@ def main_page():
 		file.write(str(json.dumps(response['context'])))
 		file.close()
 		
+		if str(response['intents'][0]['intent']) == 'customer_detail':
+			cust_id = str(response['context']['id'])
+			cust_name = str(response['context']['name'])
+
+			if cust_id!=None && cust_name!=None:
+				print cust_name+" - "+cust_id
+				
+			else if cust_id != None:
+				print cust_id
+				
+			else if cust_name != None:
+				print cust_name
+				
+
 		script1 = """<html><head><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
 			<script type="text/javascript">
 			/*eslint-env jquery */
