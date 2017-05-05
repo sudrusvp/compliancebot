@@ -33,12 +33,12 @@ def main_page():
 
 	elif request.method == 'POST':
 		context = {}
-#		if os.path.getsize('static/doc/file.txt') > 0:
-#			file = open('static/doc/file.txt','r')
-#			context = json.loads(file.read())
-#			file.close()
-#		else:
-#			print('file is empty')
+		if os.path.getsize('static/doc/file.txt') > 0:
+			file = open('static/doc/file.txt','r')
+			context = json.loads(file.read())
+			file.close()
+		else:
+			print('file is empty')
 		
 		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
 		print("***********"+json.dumps(response,indent=2)+"***************")
@@ -69,10 +69,10 @@ def main_page():
     		</a>
 			</body>
 			</html>"""
-		script2 = """<html>
-			<p style='visibility:hidden;' id='context' name='context'>{code}</p>
-			</html>""".format(code=str(json.dumps(response['context'])))
-		response = str(response['output']['text'][0]) + script1+script2
+#		script2 = """<html>
+#			<p style='visibility:hidden;' id='context' name='context'>{code}</p>
+#			</html>""".format(code=str(json.dumps(response['context'])))
+		response = str(response['output']['text'][0]) + script1
 		print "leaving post method"
 		return str(response)
 		
