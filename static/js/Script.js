@@ -17,6 +17,7 @@ $(function(){
 		$.post("/",data,function(res,err){
 			
 			console.log("inside js post function");
+			console.log(data);
 			if (err !== "success"){
 				console.log("error occured"+err);
 				$(receivedHead+"Can you please say that again"+tail).hide().appendTo(".chatdiv").show("puff", {times : 3}, 200);

@@ -28,23 +28,23 @@ app = Flask(__name__, static_url_path='/static')
 @app.route("/", methods=['GET', 'POST'])
 def main_page():
 	print "inside main"
-		if request.method == 'GET':
+	if request.method == 'GET':
 		return render_template("index2.html")
 
 	elif request.method == 'POST':
 		context = {}
-		if os.path.getsize('static/doc/file.txt') > 0:
-			file = open('static/doc/file.txt','r')
-			context = json.loads(file.read())
-			file.close()
-		else:
-			print('file is empty')
+#		if os.path.getsize('static/doc/file.txt') > 0:
+#			file = open('static/doc/file.txt','r')
+#			context = json.loads(file.read())
+#			file.close()
+#		else:
+#			print('file is empty')
 		
 		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': request.form['message']},context = context)
-		print(json.dumps(response,indent=2))
+		print("***********"+json.dumps(response,indent=2)+"***************")
 		
-		file = open(fullpath,'w')
-		print("Writing " + str(json.dumps(response['context'])) + "to file........")
+		file = open('static/doc/file.txt','w+')
+#		print("Writing " + str(json.dumps(response['context'])) + "to file........")
 		file.write(str(json.dumps(response['context'])))
 		file.close()
 		
@@ -69,7 +69,10 @@ def main_page():
     		</a>
 			</body>
 			</html>"""
-		response = str(response['output']['text'][0]) + script1
+		script2 = """\<html>
+			<p>{code}</p>
+		</html>""".format(code=str(json.dumps(response['context'])))
+		response = str(response['output']['text'][0]) + script1+script2
 		print "leaving post method"
 		return str(response)
 		
