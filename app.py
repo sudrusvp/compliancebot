@@ -5,6 +5,7 @@ import os.path
 import sys
 import datetime
 import connect_db as db
+import response_file
 from flask import Flask
 from flask import render_template
 from flask import request, url_for, make_response
@@ -32,7 +33,7 @@ def main_page():
 		return render_template("index2.html")
 
 	elif request.method == 'POST':
-		data = str(request.POST.get("message",None))
+		data = request.form['message']
 		context = {}
 		if os.path.getsize('static/doc/file.txt') > 0:
 			file = open('static/doc/file.txt','r')
@@ -41,6 +42,7 @@ def main_page():
 		else:
 			print('file is empty')
 		
+#		response = response_file.response_fun(conv_workspace_id,data,context)
 		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text' : data },context = context)
 		print("***********"+json.dumps(response,indent=2)+"***************")
 			
