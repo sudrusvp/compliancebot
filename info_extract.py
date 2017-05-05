@@ -1,0 +1,1 @@
+def info_extract_id(id):

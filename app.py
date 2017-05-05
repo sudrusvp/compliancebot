@@ -52,7 +52,7 @@ def main_page():
 			cust_id = str(response['context']['id'])
 			cust_name = str(response['context']['name'])
 
-			if cust_id!=None && cust_name!=None:
+			if cust_id!=None and cust_name!=None:
 				print cust_name+" - "+cust_id
 				
 			else if cust_id != None:
