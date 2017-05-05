@@ -5,7 +5,6 @@ import os.path
 import sys
 import datetime
 import connect_db as db
-import response_file
 from flask import Flask
 from flask import render_template
 from flask import request, url_for, make_response
