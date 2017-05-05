@@ -32,6 +32,7 @@ def main_page():
 		return render_template("index2.html")
 
 	elif request.method == 'POST':
+		data = str(request.POST.get("message",None))
 		context = {}
 		if os.path.getsize('static/doc/file.txt') > 0:
 			file = open('static/doc/file.txt','r')
@@ -40,8 +41,9 @@ def main_page():
 		else:
 			print('file is empty')
 		
-		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text': data['message'].value()},context = context)
+		response = conversation.message(workspace_id = conv_workspace_id, message_input={'text' : data },context = context)
 		print("***********"+json.dumps(response,indent=2)+"***************")
+			
 		
 		file = open('static/doc/file.txt','w+')
 #		print("Writing " + str(json.dumps(response['context'])) + "to file........")
