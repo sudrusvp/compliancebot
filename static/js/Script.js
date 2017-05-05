@@ -9,7 +9,7 @@ $(function(){
 		console.log("inside js send function");
 		var data = {
 			"message" : $("#message").val(),
-			"context" : $("context").val()
+			"context" : $("#context").val()
 		};
 		$(sentHead+data.message+tail).hide().appendTo(".chatdiv").show("puff", {times : 3}, 200);
 		$(".chatdiv").animate({ scrollTop: $(".chatdiv").prop("scrollHeight")}, 1000);
