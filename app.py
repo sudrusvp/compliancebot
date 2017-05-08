@@ -52,9 +52,12 @@ def main_page():
 		if str(response['output']['nodes_visited'][0]) == 'customer_detail':
 #			cust_detail = str(response['entities'][0]['value'])
 #			print "customer details="+cust_detail
-			return_val=requests.get('http://9.212.148.179:8000/api.php?query=1')
-			print return_val
-
+			try:
+				return_val=requests.get('http://9.212.148.179:8000/api.php?query=1')
+				print return_val
+			except:
+				print "error occured!!"
+			
 
 		script1 = """<html><head><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
 			<script type="text/javascript">
