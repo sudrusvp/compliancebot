@@ -49,8 +49,8 @@ def main_page():
 		file.close()
 		
 		if str(response['intents'][0]['intent']) == 'customer_detail':
-			cust_id = str(json.dumps(response['context']['id']))
-			cust_name = str(json.dumps(response['context']['name']))
+			cust_id = str(json.loads(response['context']['id']))
+			cust_name = str(json.loads(response['context']['name']))
 
 			if cust_id!=None and cust_name!=None:
 				print cust_name+" - "+cust_id
