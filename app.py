@@ -48,20 +48,20 @@ def main_page():
 		file.write(str(json.dumps(response['context'])))
 		file.close()
 		
-#		if str(response['intents'][0]['intent']) == 'customer_detail':
-#			cust_id = str(response['context']['id'])
-#			cust_name = str(response['context']['name'])
-#
-#			if cust_id!=None and cust_name!=None:
-#				print cust_name+" - "+cust_id
-#				
-#			elif cust_id != None:
-#				print cust_id
-#				
-#			elif cust_name != None:
-#				print cust_name
-#			print str(json.dumps(response,indent=4))		
+		if str(response['intents'][0]['intent']) == 'customer_detail':
+			cust_id = str(json.dumps(response['context']['id']))
+			cust_name = str(json.dumps(response['context']['name']))
+
+			if cust_id!=None and cust_name!=None:
+				print cust_name+" - "+cust_id
 				
+			elif cust_id != None:
+				print cust_id
+				
+			elif cust_name != None:
+				print cust_name
+			print str(json.dumps(response,indent=4))	
+
 
 		script1 = """<html><head><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
 			<script type="text/javascript">
