@@ -48,7 +48,7 @@ def main_page():
 		file.write(str(json.dumps(response['context'])))
 		file.close()
 		
-		if str(response['intents'][0]['intent']) == 'customer_detail' or str(response['output']['nodes_visited'][0]) == 'customer_detail':
+		if str(response['output']['nodes_visited'][0]) == 'customer_detail':
 			cust_id = str(response['context']['id'])
 			cust_name = str(response['context']['name'])
 
