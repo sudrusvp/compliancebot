@@ -55,10 +55,10 @@ def main_page():
 			if cust_id!=None and cust_name!=None:
 				print cust_name+" - "+cust_id
 				
-			else if cust_id != None:
+			elif cust_id != None:
 				print cust_id
 				
-			else if cust_name != None:
+			elif cust_name != None:
 				print cust_name
 				
 
