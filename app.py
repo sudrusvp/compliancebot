@@ -50,7 +50,7 @@ def main_page():
 		file.close()
 		
 		if str(response['output']['nodes_visited'][0]) == 'customer_detail':
-			cust_detail = response['entities'][0]['value']
+			cust_detail = str(response['entities'][0]['value'])
 			print "type of cust_detail="+type(cust_detail)
 			return_val=requests.get('http://www.google.com')
 			print "type of return_val="+type(return_val)
