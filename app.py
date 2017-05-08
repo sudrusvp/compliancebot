@@ -54,7 +54,6 @@ def main_page():
 #			print "customer details="+cust_detail
 			return_val=requests.get('http://9.212.148.179:8000/api.php?query=1')
 			print return_val
-			
 
 
 		script1 = """<html><head><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
