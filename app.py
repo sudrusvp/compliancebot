@@ -53,7 +53,7 @@ def main_page():
 			cust_detail = str(response['entities'][0]['value'])
 			print "type of cust_detail="+type(cust_detail)
 			return_val=requests.get('http://www.google.com')
-			print "type of return_val="+type(return_val)
+			print return_val
 			
 
 
