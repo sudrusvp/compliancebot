@@ -3,6 +3,7 @@ import urllib
 import os
 import os.path
 import sys
+import requests
 from flask import render_template
 from flask import request, url_for, make_response
 from watson_developer_cloud import ConversationV1
@@ -51,6 +52,9 @@ def main_page():
 		if str(response['output']['nodes_visited'][0]) == 'customer_detail':
 			cust_detail = response['entities'][0]['value']
 			print "type of cust_detail="+type(cust_detail)
+			return_val=requests.get('http://www.google.com')
+			print "type of return_val="+type(return_val)
+			
 
 
 		script1 = """<html><head><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
@@ -80,7 +84,7 @@ def main_page():
 		response = str(response['output']['text'][0]) + script1
 		print "leaving post method"
 		return str(response)
-		
+
 if __name__ == "__main__":
 	port = int(os.getenv('PORT', 5000))
 	print "Starting app on port %d" % port
