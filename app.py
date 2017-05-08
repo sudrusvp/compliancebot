@@ -49,18 +49,8 @@ def main_page():
 		file.close()
 		
 		if str(response['output']['nodes_visited'][0]) == 'customer_detail':
-			cust_id = str(response['context']['id'])
-			cust_name = str(response['context']['name'])
-
-			if cust_id!=None and cust_name!=None:
-				print "cust_name="+cust_name+" and cust_id="+cust_id
-				
-			elif cust_id != None:
-				print "cust_id="+cust_id
-				
-			elif cust_name != None:
-				print "cust_name="+cust_name
-#			print str(json.dumps(response,indent=4))	
+			cust_detail = response['entities'][0]['value']
+			print "type of cust_detail="+type(cust_detail)
 
 
 		script1 = """<html><head><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
