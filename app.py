@@ -30,6 +30,7 @@ def main_page():
 	if request.method == 'GET':
 		print(requests.get('https://api.ipify.org/?format=json').json());
 		return render_template("index2.html")
+		
 
 	elif request.method == 'POST':
 		data = request.form['message']
