@@ -28,6 +28,7 @@ app = Flask(__name__, static_url_path='/static')
 def main_page():
 	print "inside main"
 	if request.method == 'GET':
+		print(requests.get('https://api.ipify.org/?format=json').json());
 		return render_template("index2.html")
 
 	elif request.method == 'POST':
@@ -86,6 +87,7 @@ def main_page():
 #				print "error occured!!"
 #				print str(e)
 			page = ''
+			
 			while page == '':
 				try:
 					page = requests.get('http://ehnsarmecmpre01.extnet.ibm.com/api.php?query=2442', verify=False)
