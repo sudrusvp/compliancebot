@@ -10,7 +10,7 @@ from watson_developer_cloud import ConversationV1
 from os.path import join, dirname
 from flask import Flask
 import time
-
+from requests.auth import HTTPProxyAuth
 
 
 
@@ -29,9 +29,9 @@ def main_page():
 	print "inside main"
 	if request.method == 'GET':
 		print(requests.get('https://api.ipify.org/?format=json', proxies =  {
-			"http": "http://statica3937:7a6e25c698eefe85@sl-ams-01-guido.statica.io:9293",
-			"https": "http://statica3937:7a6e25c698eefe85@sl-ams-01-guido.statica.io:9293"
-			}).json());
+			"http": "http://sl-ams-01-guido.statica.io:9293",
+			"https": "http://sl-ams-01-guido.statica.io:9293"
+			}, auth = HTTPProxyAuth("statica3937", "7a6e25c698eefe85")).json());
 		return render_template("index2.html")
 		
 
