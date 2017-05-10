@@ -9,6 +9,7 @@ from flask import request, url_for, make_response
 from watson_developer_cloud import ConversationV1
 from os.path import join, dirname
 from flask import Flask
+import time
 
 
 
@@ -49,14 +50,55 @@ def main_page():
 		file.write(str(json.dumps(response['context'])))
 		file.close()
 		
+		json_data = {}
+		script3 = ""
 		if str(response['output']['nodes_visited'][0]) == 'customer_detail':
-#			cust_detail = str(response['entities'][0]['value'])
-#			print "customer details="+cust_detail
 			try:
-				return_val=requests.get('http://9.212.148.179:8000/api.php?query=1')
-				print return_val
+				cust_detail = str(response['entities'][0]['value'])
+				print "customer details="+cust_detail
+#				json_data = {
+#					"id":cust_detail,
+#					"name":"abc",
+#					"country":"India",
+#					"company":"IBM"
+#				}
+#				script3 =script3 = """
+#				<html>
+#				<body><hr>
+#				<table border=1>
+#				<tr>
+#				<th style="padding:7px;color:white;">ID</th><th style="padding:7px;color:white;">Name</th><th style="padding:7px;color:white;">Country</th><th style="padding:7px;color:white;">Company</th>
+#				</tr>
+#				<tr>
+#				<td style="padding:7px;color:white;">{id}</td><td style="padding:7px;color:white;">{name}</td><td style="padding:7px;color:white;">{country}</td><td style="padding:7px;color:white;">{company}</td>
+#				</tr>
+#				</table>
+#				</body>
+#				</html>""".format(id=str(json_data['id']),name=str(json_data['name']),country=str(json_data['country']),company=str(json_data['company']))
 			except:
-				print "error occured!!"
+				print "customer details not provided!!"
+				script3 = """<html></html>"""
+			
+#			try:
+#				return_val = requests.get('https://ehnsarmecmpre01.extnet.ibm.com/api.php',data = {"query":"2442"})
+#				print "Connection established!!!!"
+#			except Exception as e:
+#				print "error occured!!"
+#				print str(e)
+			page = ''
+			while page == '':
+				try:
+					page = requests.get('http://ehnsarmecmpre01.extnet.ibm.com/api.php?query=2442', verify=False)
+#					page = requests.get('https://jsonplaceholder.typicode.com/comments?postId=1')
+				except:
+					print(sys.exc_info());
+					print("Connection refused by the server..")
+					print("Let me sleep for 10 seconds")
+					time.sleep(10)
+					print("Was a nice sleep, now let me continue...")
+#					continue
+					
+			print page.json()
 			
 
 		script1 = """<html><head><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
@@ -83,7 +125,9 @@ def main_page():
 #		script2 = """<html>
 #			<p style='visibility:hidden;' id='context' name='context'>{code}</p>
 #			</html>""".format(code=str(json.dumps(response['context'])))
-		response = str(response['output']['text'][0]) + script1
+	
+
+		response = str(response['output']['text'][0]) + script1 + script3
 		print "leaving post method"
 		return str(response)
 
