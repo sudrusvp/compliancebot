@@ -34,6 +34,7 @@ def main_page():
 			"https": "http://statica3937:7a6e25c698eefe85@sl-ams-01-guido.statica.io:9293/"
 			}).json());
 		"""
+		print("Your application ip is: "+requests.get('http://api.ipify.org/?format=json'))
 		return render_template("index2.html")
 		
 
