@@ -28,10 +28,12 @@ app = Flask(__name__, static_url_path='/static')
 def main_page():
 	print "inside main"
 	if request.method == 'GET':
-		print(requests.get('https://api.ipify.org/?format=json', proxies =  {
+		"""
+		print(requests.get('http://api.ipify.org/?format=json', proxies =  {
 			"http": "http://statica3937:7a6e25c698eefe85@sl-ams-01-guido.statica.io:9293/",
 			"https": "http://statica3937:7a6e25c698eefe85@sl-ams-01-guido.statica.io:9293/"
 			}).json());
+		"""
 		return render_template("index2.html")
 		
 
