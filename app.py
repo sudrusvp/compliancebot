@@ -35,8 +35,8 @@ def main_page():
 			}).json());
 		"""
 		print(requests.get('http://api.ipify.org/?format=json').json())
-		USERNAME = 'werawitandiffiredirmedia'
-		PASSWORD = '78c253a58c3077a9a6f7a088ae8ffb17a6ca3953'
+		USERNAME = 'bceee9ed-305e-4f66-b10e-944e452f87fa-bluemix'
+		PASSWORD = '9d95869accd8d29f35c63c78562ff1b33917055ee0f3c8bf07b85b4f04484a8f'
 		url = "https://{0}:{1}@{0}.cloudant.com".format(USERNAME, PASSWORD)
 		account = cloudant.Account(url)
 		ping = account.get()
