@@ -41,6 +41,8 @@ def main_page():
 		"""
 		client = Cloudant(serviceUsername, servicePassword, url=serviceURL)
 		client.connect()
+		session = client.session()
+		print(session)
 		my_db=client['employee_db']
 		for document in my_db:
 			print document
