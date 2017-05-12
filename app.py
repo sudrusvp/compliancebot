@@ -12,6 +12,7 @@ from flask import Flask
 import time
 from requests.auth import HTTPProxyAuth
 import cloudant
+from cloudant import account
 
 
 conversation = ConversationV1(
