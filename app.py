@@ -35,7 +35,7 @@ def main_page():
 			}).json());
 		"""
 		print(requests.get('http://api.ipify.org/?format=json').json())
-		print(request.get('https://bceee9ed-305e-4f66-b10e-944e452f87fa-bluemix.cloudant.com/employee_db/employee1').json())
+		print(requests.get('https://bceee9ed-305e-4f66-b10e-944e452f87fa-bluemix.cloudant.com/employee_db/employee1').json())
 		return render_template("index2.html")
 		
 
