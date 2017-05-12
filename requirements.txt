@@ -3,4 +3,4 @@ watson_developer_cloud==0.25.1
 responses>=0.4.0
 numpy==1.12.0
 requests >=2.7.0, <3.0.0
-cloudant == 2.4.0
+cloudant == 2.3.1
