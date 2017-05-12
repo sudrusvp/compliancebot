@@ -11,7 +11,7 @@ from os.path import join, dirname
 from flask import Flask
 import time
 from requests.auth import HTTPProxyAuth
-
+import cloudant
 
 
 conversation = ConversationV1(
@@ -35,7 +35,12 @@ def main_page():
 			}).json());
 		"""
 		print(requests.get('http://api.ipify.org/?format=json').json())
-		print(requests.get('https://bceee9ed-305e-4f66-b10e-944e452f87fa-bluemix.cloudant.com/employee_db/employee1').json())
+		USERNAME = 'werawitandiffiredirmedia'
+		PASSWORD = '78c253a58c3077a9a6f7a088ae8ffb17a6ca3953'
+		url = "https://{0}:{1}@{0}.cloudant.com".format(USERNAME, PASSWORD)
+		account = cloudant.Account(url)
+		ping = account.get()
+		print ping.status_code
 		return render_template("index2.html")
 		
 
