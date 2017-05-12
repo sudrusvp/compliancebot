@@ -42,7 +42,7 @@ def main_page():
 		client = Cloudant(serviceUsername, servicePassword, url=serviceURL)
 		client.connect()
 		my_db=client['employee_db']
-		for document in my_database:
+		for document in my_db:
 			print document
 		print(requests.get('http://api.ipify.org/?format=json').json())
 		return render_template("index2.html")
