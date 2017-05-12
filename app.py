@@ -44,6 +44,14 @@ def main_page():
 		my_db=client['employee_db']
 		for document in my_db:
 			print document
+		data = {
+			"_id" : "employee2",
+			"first_name" : "rakesh",
+			"last_name" : "patil"
+		}
+		my_doc1 = my_db.create_document(data)
+		if my_doc1.exists():
+			print "my_doc1 successfully created!!!"
 		print(requests.get('http://api.ipify.org/?format=json').json())
 		return render_template("index2.html")
 		
