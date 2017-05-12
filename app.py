@@ -17,7 +17,7 @@ from cloudant.result import Result, ResultByKey
 
 serviceUsername = "bceee9ed-305e-4f66-b10e-944e452f87fa-bluemix"
 servicePassword = "9d95869accd8d29f35c63c78562ff1b33917055ee0f3c8bf07b85b4f04484a8f"
-serviceURL = "bceee9ed-305e-4f66-b10e-944e452f87fa-bluemix.cloudant.com"
+serviceURL = "https://bceee9ed-305e-4f66-b10e-944e452f87fa-bluemix:9d95869accd8d29f35c63c78562ff1b33917055ee0f3c8bf07b85b4f04484a8f@bceee9ed-305e-4f66-b10e-944e452f87fa-bluemix.cloudant.com"
 
 conversation = ConversationV1(
     username='8b39e53f-697e-4c3a-aee7-efc78061bce0',
