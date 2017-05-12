@@ -39,13 +39,15 @@ def main_page():
 			"https": "http://statica3937:7a6e25c698eefe85@sl-ams-01-guido.statica.io:9293/"
 			}).json());
 		"""
-		client = Cloudant(serviceUsername, servicePassword, url=serviceURL)
-		client.connect()
-		session = client.session()
-		print(json.dumps(session,indent=4))
-		my_db=client['employee_db']
-		for document in my_db:
-			print document
+#		client = Cloudant(serviceUsername, servicePassword, url=serviceURL)
+#		client.connect()
+#		session = client.session()
+#		print(json.dumps(session,indent=4))
+#		my_db=client['employee_db']
+		ip = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
+		print (ip)
+#		for document in my_db:
+#			print document
 #		data = {
 #			"_id" : "employee2",
 #			"first_name" : "rakesh",
@@ -54,7 +56,7 @@ def main_page():
 #		my_doc1 = my_db.create_document(data)
 #		if my_doc1.exists():
 #			print "my_doc1 successfully created!!!"
-		print(requests.get('http://api.ipify.org/?format=json').json())
+#		print(requests.get('http://api.ipify.org/?format=json').json())
 		return render_template("index2.html")
 		
 
