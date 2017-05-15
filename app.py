@@ -44,8 +44,8 @@ def main_page():
 #		session = client.session()
 #		print(json.dumps(session,indent=4))
 #		my_db=client['employee_db']
-		ip = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
-		print (ip)
+#		ip = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
+#		print (ip)
 #		for document in my_db:
 #			print document
 #		data = {
@@ -109,27 +109,27 @@ def main_page():
 				print "customer details not provided!!"
 				script3 = """<html></html>"""
 			
-#			try:
-#				return_val = requests.get('https://ehnsarmecmpre01.extnet.ibm.com/api.php',data = {"query":"2442"})
-#				print "Connection established!!!!"
-#			except Exception as e:
-#				print "error occured!!"
-#				print str(e)
-			page = ''
+			try:
+				return_val = requests.get('https://ehnsarmecmpre01.extnet.ibm.com/api.php?query=2442',verify = False)
+				print "Connection established!!!!"
+			except Exception as e:
+				print "error occured!!"
+				print str(e)
+#			page = ''
 			
-			while page == '':
-				try:
-					page = requests.get('http://ehnsarmecmpre01.extnet.ibm.com/api.php?query=2442', verify=False)
-#					page = requests.get('https://jsonplaceholder.typicode.com/comments?postId=1')
-				except:
-					print(sys.exc_info());
-					print("Connection refused by the server..")
-					print("Let me sleep for 10 seconds")
-					time.sleep(10)
-					print("Was a nice sleep, now let me continue...")
-#					continue
-					
-			print page.json()
+#			while page == '':
+#				try:
+#					page = requests.get('http://ehnsarmecmpre01.extnet.ibm.com/api.php?query=2442', verify=False)
+##					page = requests.get('https://jsonplaceholder.typicode.com/comments?postId=1')
+#				except:
+#					print(sys.exc_info());
+#					print("Connection refused by the server..")
+#					print("Let me sleep for 10 seconds")
+#					time.sleep(10)
+#					print("Was a nice sleep, now let me continue...")
+##					continue
+#					
+#			print page.json()
 			
 
 		script1 = """<html><head><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
