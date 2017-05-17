@@ -110,10 +110,7 @@ def main_page():
 				script3 = """<html></html>"""
 			
 			try:
-				return_val = requests.get('https://ehnsarmecmpre01.extnet.ibm.com/api.php?query=2442',verify = False,proxies = {
-					'http':'',
-					'https'
-				})
+				return_val = requests.get('https://ehnsarmecmpre01.extnet.ibm.com/api.php?query=2442',verify = False,proxies = {'http':'','https':''})
 				print "Connection established!!!!"
 			except Exception as e:
 				print "error occured!!"
